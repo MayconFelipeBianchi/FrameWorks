@@ -8,9 +8,13 @@
         img {
             width: 250px;
             height: 150px;
+            transition: transform 5s ease; /* Adiciona uma transição suave */
+        }
+        img:hover {
+            transform: rotate(100000000deg); /* Rotaciona a imagem em 360 graus */
         }
         body {
-            background: black;
+            background: rgb(0, 0, 0);
             color: aliceblue;
             font-family: Arial, sans-serif;
         }
@@ -49,7 +53,6 @@
         <img src="https://brandigno.com.br/wp-content/uploads/2017/04/10c.png" alt="Fotinha">
         <h1>Bem-vindo à minha Página</h1>
     </div>
-
 
     <!-- Div para exibir os dados recebidos -->
     <div id="exibirDados"></div>
