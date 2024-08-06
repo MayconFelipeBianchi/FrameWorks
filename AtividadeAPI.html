@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Padrão</title>
+    <style>
+        img {
+            width: 250px;
+            height: 150px;
+        }
+        body {
+            background: black;
+            color: aliceblue;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: brown;
+            text-align: center;
+        }
+        h4 {
+            color: aliceblue;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; 
+            padding: 20px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Verde */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://brandigno.com.br/wp-content/uploads/2017/04/10c.png" alt="Fotinha">
+        <h1>Bem-vindo à minha Página</h1>
+    </div>
+
+
+    <!-- Div para exibir os dados recebidos -->
+    <div id="exibirDados"></div>
+    
+    <!-- Botão simplificado -->
+    <button id="buscarDados">Consumir API</button>
+
+    <script>
+        document.getElementById('buscarDados').addEventListener('click', buscarDadosAPI);
+
+        function buscarDadosAPI() {
+            fetch('https://b3c5-177-91-39-198.ngrok-free.app/api/user', { 
+                method: "GET", 
+                headers: { "ngrok-skip-browser-warning": "true" } 
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(resp => {
+                console.log('Dados recebidos:', resp);
+                const exibirDados = document.getElementById('exibirDados');
+                exibirDados.innerHTML = `
+                    <h3>Nome: ${resp.name}</h3>
+                    <h3>Idade: ${resp.age}</h3>
+                    <h3>Sobre mim: ${resp.aboutme}</h3>
+                `;
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error.message);
+            });
+        }
+    </script>
+</body>
+</html>
