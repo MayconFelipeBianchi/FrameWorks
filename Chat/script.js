@@ -63,5 +63,36 @@ function enterChatRoom() {
             };
             stompClient.send('/app/sendMessage',{},JSON.stringify(chatMessage));
             document.getElementById("messageInput").value = '';
+            
         }
     }
+
+    function leaveChat(){
+        if (stompClient){
+            var chatMessage = {
+                sender: username,
+                type: 'LEAVE'
+            };
+        stompClient.send("/app/leaveUser",{},JSON.stringify(chatMessage));
+        stompClient.disconnect(()=>{
+            console.log("Desconectado");
+
+        
+            var chatRoom = document.getElementById("chat-room");
+            chatRoom.classList.remove('show');
+            setTimeout(() => {
+                chatRoom.style.display = "none";
+                var welcomeForm = document.getElementById('welcome-form');
+                welcomeForm.style.display = 'block';
+                setTimeout(() => { welcomeForm.classList.remove('hide'); }, 10);
+            }, 550); 
+        });
+        
+        }
+    }
+    document.getElementById("messageInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+            sendMessage(); 
+        }
+});

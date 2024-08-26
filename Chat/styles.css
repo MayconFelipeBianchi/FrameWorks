@@ -2,14 +2,14 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #a2c2e3, #f5f5f5); 
+    background: linear-gradient(135deg, #a2c2e3, #f5f5f5);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    align-items: center;
+    overflow: hidden;
 }
 
 .container {
@@ -17,7 +17,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     width: 600px;
-    height: 600px;
+    max-height: 600px; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -37,16 +37,16 @@ body {
     display: flex;
     flex-direction: row;
     padding: 20px;
+    overflow: hidden;
 }
 
 #messages {
-    border: 1px solid #000; 
+    border: 1px solid #000;
     border-radius: 4px;
     padding: 10px;
     height: 300px;
     overflow-y: auto;
-    margin-bottom: 10px;
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
 }
 
 .sidebar {
@@ -58,16 +58,17 @@ body {
 
 #messageInput {
     width: 100%;
-    padding: 3px;
+    padding: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 button {
     padding: 10px;
     margin-top: 10px;
-    background-color: #1e90ff; /* Azul forte */
+    background-color: #1e90ff; 
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -77,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #4682b4; /* Azul médio */
+    background-color: #4682b4; 
 }
 
 .footer {
