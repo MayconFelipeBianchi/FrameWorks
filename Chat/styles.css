@@ -100,4 +100,6 @@ button:hover {
 
 #chat-room {
     display: none;
+    overflow-x: auto;
+    overflow-y: auto;
 }
